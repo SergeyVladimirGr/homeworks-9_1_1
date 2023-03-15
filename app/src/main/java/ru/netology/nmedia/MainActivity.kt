@@ -8,10 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        R.id.mainText
-
-        println(R.string.hello)
-        println(getString(R.string.hello))
+        println(R.string.nmedia)
+        println(getString(R.string.nmedia))
         println(resources.displayMetrics.heightPixels)
         println(resources.displayMetrics.widthPixels)
         println(resources.displayMetrics.densityDpi)
