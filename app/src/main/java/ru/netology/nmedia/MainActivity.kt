@@ -27,14 +27,14 @@ class MainActivity : AppCompatActivity() {
                 if (post.liked) R.drawable.ic_likes_24 else R.drawable.ic_like_24
             )
             if (post.liked) post.lakes++ else post.lakes--
-            binding.likeCount.text = likeValueFormat(post)
+            binding.likeCount.text = valueFormat(post.lakes)
         }
 
         binding.shareCount.text = post.shareValue.toString()
         binding.share.setOnClickListener {
             post.shareValue++
-            binding.shareCount.text = shareValueFormat(post)
-            binding.viewsCount.text = shareValueFormat(post)
+            binding.shareCount.text = valueFormat(post.shareValue)
+            binding.viewsCount.text = valueFormat(post.shareValue)
         }
         binding.viewsCount.text = post.shareValue.toString()
 
@@ -65,37 +65,20 @@ class MainActivity : AppCompatActivity() {
         */
     }
 
-    private fun likeValueFormat(post: Post): String {
+    private fun valueFormat(post: Int): String {
         var result = ""
-        if (post.lakes in 1..999)
-            result = post.lakes.toString()
-        if (post.lakes in 1_000..1_099)
-            result = (post.lakes / 1_000).toString() + "K"
-        if (post.lakes in 1_100..9_999)
-            result = ((post.lakes / 100).toDouble() / 10).toString() + "K"
-        if (post.lakes in 10_000..999_999)
-            result = (post.lakes / 1_000).toString() + "K"
-        if (post.lakes in 1_000_000..1_099_999)
-            result = (post.lakes / 1_000_000).toString() + "M"
-        if (post.lakes in 1_100_000..9_999_999)
-            result = ((post.lakes / 100_000).toDouble() / 10).toString() + "M"
-        return result
-    }
-
-    private fun shareValueFormat(post: Post): String {
-        var result = ""
-        if (post.shareValue in 1..999)
-            result = post.shareValue.toString()
-        if (post.shareValue in 1_000..1_099)
-            result = (post.shareValue / 1_000).toString() + "K"
-        if (post.shareValue in 1_100..9_999)
-            result = ((post.shareValue / 100).toDouble() / 10).toString() + "K"
-        if (post.shareValue in 10_000..999_999)
-            result = (post.shareValue / 1_000).toString() + "K"
-        if (post.shareValue in 1_000_000..1_099_999)
-            result = (post.shareValue / 1_000_000).toString() + "M"
-        if (post.shareValue in 1_100_000..9_999_999)
-            result = ((post.shareValue / 100_000).toDouble() / 10).toString() + "M"
+        if (post in 1..999)
+            result = post.toString()
+        if (post in 1_000..1_099)
+            result = (post / 1_000).toString() + "K"
+        if (post in 1_100..9_999)
+            result = ((post / 100).toDouble() / 10).toString() + "K"
+        if (post in 10_000..999_999)
+            result = (post / 1_000).toString() + "K"
+        if (post in 1_000_000..1_099_999)
+            result = (post / 1_000_000).toString() + "M"
+        if (post in 1_100_000..9_999_999)
+            result = ((post / 100_000).toDouble() / 10).toString() + "M"
         return result
     }
 }
