@@ -2,48 +2,36 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.netology.dto.Post
+import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val post = Post(
-            author = "Нетология. Университет интернет-профессий будущего",
-            authorAvatar = "",
-            published = "21 мая в 18:36",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb"
-        )
-        binding.author.text = post.author
-        binding.published.text = post.published
-        binding.content.text = post.content
 
-        binding.likeCount.text = post.lakes.toString()
+        val viewModel by viewModels<PostViewModel>()
+        viewModel.data.observe(this) { post ->
+            with(binding) {
+                author.text = post.author
+                published.text = post.published
+                content.text = post.content
+                like.setImageResource(
+                    if (post.liked) R.drawable.ic_likes_24 else R.drawable.ic_like_24
+                )
+                likeCount.text = valueFormat(post.lakes)
+                shareCount.text = valueFormat(post.shareValue)
+                viewsCount.text = valueFormat(post.shareValue)
+            }
+        }
         binding.like.setOnClickListener {
-            post.liked = !post.liked
-            binding.like.setImageResource(
-                if (post.liked) R.drawable.ic_likes_24 else R.drawable.ic_like_24
-            )
-            if (post.liked) post.lakes++ else post.lakes--
-            binding.likeCount.text = valueFormat(post.lakes)
+            viewModel.like()
         }
-
-        binding.shareCount.text = post.shareValue.toString()
         binding.share.setOnClickListener {
-            post.shareValue++
-            binding.shareCount.text = valueFormat(post.shareValue)
-            binding.viewsCount.text = valueFormat(post.shareValue)
+            viewModel.share()
         }
-        binding.viewsCount.text = post.shareValue.toString()
-
-        /*
-       findViewById<ImageView>(R.id.like).setOnClickListener {
-       (it as ImageView).setImageResource(R.drawable.baseline_favorite_24)
-       println("click")
-       }
-       */
 /*
         binding.root.setOnClickListener {
             Log.d("stuff", "stuff")
