@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         */
     }
 
-    fun likeValueFormat(post: Post): String {
+    private fun likeValueFormat(post: Post): String {
         var result = ""
         if (post.lakes in 1..999)
             result = post.lakes.toString()
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
-    fun shareValueFormat(post: Post): String {
+    private fun shareValueFormat(post: Post): String {
         var result = ""
         if (post.shareValue in 1..999)
             result = post.shareValue.toString()
