@@ -12,4 +12,9 @@
     <string name="shareCount">5</string>
     <string name="description_post_views">Post views</string>
     <string name="viewsCount">500</string>
+    <string name="menu_remove">Remove</string>
+    <string name="menu_edit">Edit</string>
+    <string name="post_text">Post Text</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="post_edit">Edit Message</string>
 </resources>
