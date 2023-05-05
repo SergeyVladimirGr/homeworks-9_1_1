@@ -5,6 +5,7 @@
     <string name="published">21 мая в 18:36</string>
     <string name="content">Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb</string>
     <string name="description_post_author_avatar">Post author avatar</string>
+    <string name="description_post_video">Post video</string>
     <string name="description_post_menu">Post menu</string>
     <string name="description_post_like">Post like</string>
     <string name="likeCount">10</string>
@@ -17,4 +18,7 @@
     <string name="post_text">Post Text</string>
     <string name="error_empty_content">Content can\'t be empty</string>
     <string name="post_edit">Edit Message</string>
+    <string name="chooser_share_post">Share post</string>
+    <string name="save">Save</string>
+    <string name="uri">https://www.youtube.com/watch?v=WhWc3b3KhnY</string>
 </resources>

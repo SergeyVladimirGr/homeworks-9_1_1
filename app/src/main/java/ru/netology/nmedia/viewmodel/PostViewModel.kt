@@ -1,5 +1,6 @@
 package ru.netology.nmedia.viewmodel
 
+import android.provider.MediaStore.Video
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.dto.Post
@@ -14,7 +15,8 @@ private val empty = Post(
     content = "",
     likes = 0,
     shareValue = 0,
-    liked = false
+    liked = false,
+    video = false
 )
 
 class PostViewModel : ViewModel() {
@@ -22,7 +24,7 @@ class PostViewModel : ViewModel() {
     val data = repository.getAll()
 
     // текущий редактируемый пост. если empty, значит готовый к добавлению записи
-    val edited = MutableLiveData(empty)
+    private val edited = MutableLiveData(empty)
     
     fun save() {
         edited.value?.let {
@@ -31,6 +33,7 @@ class PostViewModel : ViewModel() {
         edited.value = empty
     }
 
+    // функция создания поста
     fun changeContent(content: String) {
         val text = content.trim()
         if (edited.value?.content == text) {
@@ -45,7 +48,6 @@ class PostViewModel : ViewModel() {
     fun cancel() {
         edited.value = empty
     }
-
     fun edit(post: Post) {
         edited.value = post
     }

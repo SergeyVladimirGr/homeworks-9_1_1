@@ -9,4 +9,5 @@ data class Post(
     val likes: Int,
     val shareValue: Int,
     val liked: Boolean,
+    val video: Boolean
 )

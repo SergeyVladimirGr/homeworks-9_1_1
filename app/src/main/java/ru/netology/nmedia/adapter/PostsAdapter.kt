@@ -1,7 +1,6 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -17,6 +16,7 @@ interface onInteractionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onCancel() {}
+    fun onLaunchVideo(post: Post) {}
 }
 
 class PostsAdapter(
@@ -46,6 +46,7 @@ class PostViewHolder(
             like.text = valueFormat(post.likes)
             share.text = valueFormat(post.shareValue)
             views.text = valueFormat(post.shareValue)
+            video.setImageResource(R.mipmap.ic_banner_video)
 
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
@@ -71,6 +72,9 @@ class PostViewHolder(
             }
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
+            }
+            video.setOnClickListener {
+                onInteractionListener.onLaunchVideo(post)
             }
         }
     }

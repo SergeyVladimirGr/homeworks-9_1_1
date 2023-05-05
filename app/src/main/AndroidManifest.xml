@@ -12,6 +12,26 @@
         android:theme="@style/Theme.NMedia"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EditingPostActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity
+            android:name=".activity.NewPostActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" /> <!-- при появлении клавиатуры, адаптируем размер активити -->
+        <activity
+            android:name=".activity.IntentHandlerActivity"
+            android:exported="true"> <!-- если true то активити будет видна за пределами нашего приложения -->
+            <intent-filter> <!-- объявляем в активити интент-фильтр для принятия данных из системы -->
+                <action android:name="android.intent.action.SEND" /> <!-- действие отправить - что нужно делать -->
+
+                <category android:name="android.intent.category.DEFAULT" /> <!-- значение по умолчанию - дополнительная информация о типе компонента -->
+
+                <data android:mimeType="text/plain" /> <!-- ограничение на тип данных -->
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
